@@ -28,13 +28,6 @@ export function Login(): JSX.Element {
         pattern='(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)'
       />
       <Button>Submit</Button>
-      <div>
-        <p>
-          {email}
-          <br />
-          {password}
-        </p>
-      </div>
     </Forms>
   );
 }
