@@ -1,5 +1,6 @@
 import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { loginQuery } from '../../services/loginRequest';
 import { Button, Forms, Input, Label, Title } from './login.component.style';
 
@@ -13,7 +14,7 @@ export function Login(): JSX.Element {
       console.log(error.message);
     },
 
-    onCompleted: (e: any) => {
+    onCompleted: (e) => {
       const tokenValue = e.login.token;
       localStorage.setItem('token', tokenValue);
       const token = localStorage.token;
@@ -35,28 +36,33 @@ export function Login(): JSX.Element {
   console.log(loading, data);
 
   return (
-    <Forms onSubmit={sendForm}>
-      <Title>Bem vindo(a) à Taqtile!</Title>
-      <Label> Email: </Label>
-      <Input
-        id='email'
-        type='email'
-        required
-        placeholder='email@example.com'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        pattern="/^[a-zA-Z0-9.!#$%&'*+\=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-      />
-      <Label> Senha: </Label>
-      <Input
-        id='senha'
-        type='password'
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        pattern='(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)'
-      />
-      <Button>Submit</Button>
-    </Forms>
+    <>
+      <Forms onSubmit={sendForm}>
+        <Title>Bem vindo(a) à Taqtile!</Title>
+        <Label> Email: </Label>
+        <Input
+          id='email'
+          type='email'
+          required
+          placeholder='email@example.com'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          pattern="/^[a-zA-Z0-9.!#$%&'*+\=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+          />
+        <Label> Senha: </Label>
+        <Input
+          id='senha'
+          type='password'
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          pattern='(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)'
+          />
+        <Button>Submit</Button>
+      </Forms>
+
+      <Link to="/teste">Link de teste</Link>
+    </>
+
   );
 }

@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import React from 'react';
-import { Login } from './components';
+import { Destiny } from './routes';
 
 const client = new ApolloClient({
   uri: 'https://tq-template-server-sample.herokuapp.com/graphql',
@@ -10,7 +10,7 @@ const client = new ApolloClient({
 export function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
-      <Login />
+      <Destiny />
     </ApolloProvider>
   );
 }
