@@ -1,4 +1,5 @@
 import React from 'react';
+import { Li, Subtitle, Ul } from './user-list.component.style';
 
 export function ListUserList() {
   const users = [
@@ -9,6 +10,7 @@ export function ListUserList() {
     { name: 'Johny', age: 59 },
     { name: 'Elder', age: 79 },
     { name: 'Elefante', age: 89 },
+    { name: 'Donald', age: 109 },
   ];
 
   const listagemNome = users.map((users) => <li key={users.name}>{users.name}</li>);
@@ -16,9 +18,19 @@ export function ListUserList() {
 
   return (
     <>
-      <ul>
-        {listagemNome},{listagemIdade}
-      </ul>
+      <Subtitle>Listagem de usuários</Subtitle>
+      <Ul>
+        <Li>
+          <p>NOME:</p>
+          <br />
+          {listagemNome}
+        </Li>
+        <Li>
+          <p>IDADE:</p>
+          <br />
+          {listagemIdade}
+        </Li>
+      </Ul>
     </>
   );
 }

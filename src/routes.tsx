@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login } from './components';
-import { Teste } from './teste';
+import { ListUserList, Login } from './components';
 
 export function MyRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/teste/*' element={<Teste />} />
+        <Route path='/user-list/*' element={<ListUserList />} />
       </Routes>
     </BrowserRouter>
   );
