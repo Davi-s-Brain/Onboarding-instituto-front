@@ -17,7 +17,6 @@ export function Login(): JSX.Element {
     onCompleted: (e) => {
       const tokenValue = e.login.token;
       localStorage.setItem('token', tokenValue);
-      const token = localStorage.token;
 
       alert('Bem vindo(a)!');
     },

@@ -1,16 +1,15 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Login } from './components';
+import { Teste } from './teste';
 
-import { Login } from "./components";
-import { Teste } from "./teste"
-
-export function Destiny() {
+export function MyRoutes() {
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login />}/>
-        <Route path='/teste' element={<Teste />}/>
+        <Route path='/' element={<Login />} />
+        <Route path='/teste/*' element={<Teste />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
