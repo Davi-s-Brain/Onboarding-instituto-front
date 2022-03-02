@@ -18,9 +18,9 @@ export const Subtitle = styled.h2`
   text-align: center;
 `;
 
-export const H4 = styled.h4`
+export const H2 = styled.h2`
   text-align: center;
-  word-spacing: 520px;
+  width: 400px;
 `;
 
 export const Div = styled.div`
@@ -29,5 +29,14 @@ export const Div = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 780px;
-  align-items: right;
+  padding: 0px;
+`;
+
+export const DivTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+  justify-content: center;
 `;

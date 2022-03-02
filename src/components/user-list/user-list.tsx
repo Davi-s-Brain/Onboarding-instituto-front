@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { getUsersQuery } from '../../services/usersRequest';
-import { Div, H4, Li, Subtitle, Ul } from './user-list.component.style';
+import { Div, DivTitle, H2, Li, Subtitle, Ul } from './user-list.component.style';
 
 export function ListUserList() {
   interface usersType {
@@ -24,9 +24,7 @@ export function ListUserList() {
     },
   });
 
-  const usersData = data?.users?.nodes?.map((users: { name: string; email: string }) => users);
-
-  const usersList = usersData?.map((users: usersType) => {
+  const usersList = data?.users?.nodes?.map((users: usersType) => {
     return (
       <React.Fragment key={users.email}>
         <Div>
@@ -40,7 +38,9 @@ export function ListUserList() {
   return (
     <>
       <Subtitle>Listagem de usuários</Subtitle>
-      <H4>NOME: EMAIL:</H4>
+      <DivTitle>
+        <H2>NOME: </H2> <H2>EMAIL: </H2>
+      </DivTitle>
       <Ul>{usersList}</Ul>
     </>
   );
