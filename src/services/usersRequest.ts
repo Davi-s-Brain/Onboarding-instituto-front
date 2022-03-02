@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const getUsersquery = gql`
+export const getUsersQuery = gql`
   query users($offset: Int, $limit: Int) {
     users(pageInfo: { offset: $offset, limit: $limit }) {
       nodes {
@@ -10,8 +10,6 @@ export const getUsersquery = gql`
       pageInfo {
         offset
         limit
-        hasPreviousPage
-        hasNextPage
       }
     }
   }

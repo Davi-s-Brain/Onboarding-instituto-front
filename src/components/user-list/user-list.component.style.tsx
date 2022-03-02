@@ -20,7 +20,7 @@ export const Subtitle = styled.h2`
 
 export const H4 = styled.h4`
   text-align: center;
-  word-spacing: 125px;
+  word-spacing: 520px;
 `;
 
 export const Div = styled.div`
@@ -28,6 +28,6 @@ export const Div = styled.div`
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 380px;
+  width: 780px;
   align-items: right;
 `;

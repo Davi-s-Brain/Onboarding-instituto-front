@@ -1,28 +1,37 @@
+import { useQuery } from '@apollo/client';
 import React from 'react';
+import { getUsersQuery } from '../../services/usersRequest';
 import { Div, H4, Li, Subtitle, Ul } from './user-list.component.style';
 
 export function ListUserList() {
-  const users = [
-    { name: 'Davi', age: 19 },
-    { name: 'John', age: 29 },
-    { name: 'Gabo', age: 39 },
-    { name: 'Gabriel', age: 49 },
-    { name: 'Johny', age: 59 },
-    { name: 'Elder', age: 79 },
-    { name: 'Elefante', age: 89 },
-    { name: 'Donald', age: 109 },
-  ];
+  interface usersType {
+    name: string;
+    email: string;
+  }
 
-  const usersList = users.map((item) => {
+  const token = localStorage.token;
+  const limit = 12;
+  const offset = 10;
+  const { data } = useQuery(getUsersQuery, {
+    context: {
+      headers: {
+        Authorization: token,
+      },
+    },
+    variables: {
+      offset,
+      limit,
+    },
+  });
+
+  const usersData = data?.users?.nodes?.map((users: { name: string; email: string }) => users);
+
+  const usersList = usersData?.map((users: usersType) => {
     return (
-      <React.Fragment key={item.name}>
+      <React.Fragment key={users.email}>
         <Div>
-            <Li>
-              {item.name}
-            </Li>
-            <Li>
-              {item.age}
-            </Li>
+          <Li>{users.name}</Li>
+          <Li>{users.email}</Li>
         </Div>
       </React.Fragment>
     );
@@ -31,7 +40,7 @@ export function ListUserList() {
   return (
     <>
       <Subtitle>Listagem de usuários</Subtitle>
-      <H4>NOME: IDADE:</H4>
+      <H4>NOME: EMAIL:</H4>
       <Ul>{usersList}</Ul>
     </>
   );
