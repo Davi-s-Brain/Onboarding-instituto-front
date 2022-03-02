@@ -1,5 +1,5 @@
 import React from 'react';
-import { Li, Subtitle, Ul } from './user-list.component.style';
+import { Div, H4, Li, Subtitle, Ul } from './user-list.component.style';
 
 export function ListUserList() {
   const users = [
@@ -13,24 +13,26 @@ export function ListUserList() {
     { name: 'Donald', age: 109 },
   ];
 
-  const listagemNome = users.map((users) => <li key={users.name}>{users.name}</li>);
-  const listagemIdade = users.map((users) => <li key={users.name}>{users.age}</li>);
+  const usersList = users.map((item) => {
+    return (
+      <React.Fragment key={item.name}>
+        <Div>
+            <Li>
+              {item.name}
+            </Li>
+            <Li>
+              {item.age}
+            </Li>
+        </Div>
+      </React.Fragment>
+    );
+  });
 
   return (
     <>
       <Subtitle>Listagem de usuários</Subtitle>
-      <Ul>
-        <Li>
-          <p>NOME:</p>
-          <br />
-          {listagemNome}
-        </Li>
-        <Li>
-          <p>IDADE:</p>
-          <br />
-          {listagemIdade}
-        </Li>
-      </Ul>
+      <H4>NOME: IDADE:</H4>
+      <Ul>{usersList}</Ul>
     </>
   );
 }
