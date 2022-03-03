@@ -1,17 +1,20 @@
-import { ApolloError, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { loginQuery } from '../../services/loginRequest';
-import { Button, Forms, Input, Label, Title } from './login.component.style';
+import { ButtonStyled, FormsStyled, InputStyled, LabelStyled, TitleStyled } from './login.component.style';
 
 export function Login(): JSX.Element {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const [login, { data, loading }] = useMutation(loginQuery, {
-    onError: (error: ApolloError) => {
+  const animation = <Spinner animation='border' />;
+
+  const [login, { loading: LoadingButton }] = useMutation(loginQuery, {
+    onError: () => {
       alert('Login ou senha inválidos, tente novamente!');
-      console.log(error.message);
     },
 
     onCompleted: (e) => {
@@ -19,6 +22,7 @@ export function Login(): JSX.Element {
       localStorage.setItem('token', tokenValue);
 
       alert('Bem vindo(a)!');
+      navigate('/user-list');
     },
   });
 
@@ -32,36 +36,41 @@ export function Login(): JSX.Element {
     });
   };
 
-  console.log(loading, data);
+  function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(e.target.value);
+  }
+
+  function handlePassword(e: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(e.target.value);
+  }
 
   return (
     <>
-      <Forms onSubmit={sendForm}>
-        <Title>Bem vindo(a) à Taqtile!</Title>
-        <Label> Email: </Label>
-        <Input
+      <FormsStyled onSubmit={sendForm}>
+        <TitleStyled>Bem vindo(a) à Taqtile!</TitleStyled>
+        <LabelStyled> Email: </LabelStyled>
+        <InputStyled
           id='email'
           type='email'
           required
           placeholder='email@example.com'
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmail}
           pattern="/^[a-zA-Z0-9.!#$%&'*+\=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-          />
-        <Label> Senha: </Label>
-        <Input
+        />
+        <LabelStyled> Senha: </LabelStyled>
+        <InputStyled
           id='senha'
           type='password'
           required
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePassword}
           pattern='(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)'
-          />
-        <Button>Submit</Button>
-      </Forms>
-
-      <Link to="/teste">Link de teste</Link>
+        />
+        <ButtonStyled className='btn-doido' variant='outline-primary' type='submit' disabled={LoadingButton}>
+          {LoadingButton ? animation : 'Submit'}
+        </ButtonStyled>
+      </FormsStyled>
     </>
-
   );
 }

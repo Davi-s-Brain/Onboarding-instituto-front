@@ -1,5 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import React from 'react';
+import { GlobalStyled } from './atomic/globals';
 import { MyRoutes } from './routes';
 
 const client = new ApolloClient({
@@ -10,6 +11,7 @@ const client = new ApolloClient({
 export function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
+      <GlobalStyled />
       <MyRoutes />
     </ApolloProvider>
   );
