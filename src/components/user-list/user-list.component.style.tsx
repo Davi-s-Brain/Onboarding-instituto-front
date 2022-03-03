@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Ul = styled.ul`
+export const UlStyled = styled.ul`
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -9,21 +9,21 @@ export const Ul = styled.ul`
   align-items: center;
 `;
 
-export const Li = styled.li`
+export const LiStyled = styled.li`
   padding: 5px 50px 5px 50px;
   font-size: 24px;
 `;
 
-export const Subtitle = styled.h2`
+export const SubtitleStyled = styled.h2`
   text-align: center;
 `;
 
-export const H2 = styled.h2`
+export const H2Styled = styled.h2`
   text-align: center;
   width: 400px;
 `;
 
-export const Div = styled.div`
+export const DivStyled = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -32,7 +32,7 @@ export const Div = styled.div`
   padding: 0px;
 `;
 
-export const DivTitle = styled.div`
+export const DivTitleStyled = styled.div`
   display: flex;
   flex-direction: row;
   list-style: none;

@@ -1,21 +1,13 @@
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
-export const Body = styled.body`
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-`;
-
-export const Input = styled.input`
+export const InputStyled = styled.input`
   height: 30px;
   width: 400px;
   border-radius: 5px;
 `;
 
-export const Btn = styled(Button)`
+export const ButtonStyled = styled(Button)`
   background-color: rgb(93, 0, 180);
   font-weight: bold;
   cursor: pointer;
@@ -26,7 +18,7 @@ export const Btn = styled(Button)`
   color: white;
 `;
 
-export const Label = styled.label`
+export const LabelStyled = styled.label`
   font-family: Arial;
   font-weight: bold;
   display: block;
@@ -35,7 +27,7 @@ export const Label = styled.label`
   margin-bottom: 12px;
 `;
 
-export const Forms = styled.form`
+export const FormsStyled = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -44,6 +36,6 @@ export const Forms = styled.form`
   align-items: center;
 `;
 
-export const Title = styled.h1`
+export const TitleStyled = styled.h1`
   font: bold 30px arial, sans-serif;
 `;
