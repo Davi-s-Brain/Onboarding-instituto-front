@@ -1,9 +1,9 @@
 import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { loginQuery } from '../../services/loginRequest';
-import { Forms, Input, Label, Title } from './login.component.style';
+import { Btn, Forms, Input, Label, Title } from './login.component.style';
 
 export function Login(): JSX.Element {
   const [email, setEmail] = useState('');
@@ -37,25 +37,16 @@ export function Login(): JSX.Element {
     });
   };
 
-  console.log(data);
+  function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(e.target.value);
+  }
+
+  function handlePassword(e: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(e.target.value);
+  }
 
   return (
     <>
-      <style type='text/css'>
-        {`
-          .btn-doido {
-            background-color: rgb(93, 0, 180);
-            font-weight: bold;
-            height: 50px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-            outline-style: none;
-            width: 400px;
-            color: white;
-          }
-        `}
-      </style>
       <Forms onSubmit={sendForm}>
         <Title>Bem vindo(a) à Taqtile!</Title>
         <Label> Email: </Label>
@@ -65,7 +56,7 @@ export function Login(): JSX.Element {
           required
           placeholder='email@example.com'
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmail}
           pattern="/^[a-zA-Z0-9.!#$%&'*+\=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
         />
         <Label> Senha: </Label>
@@ -74,12 +65,12 @@ export function Login(): JSX.Element {
           type='password'
           required
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePassword}
           pattern='(^(?=.*\d)(?=.*[a-zA-Z]).{7,}$)'
         />
-        <Button className='btn-doido' variant='outline-primary' type='submit' disabled={LoadingButton}>
+        <Btn className='btn-doido' variant='outline-primary' type='submit' disabled={LoadingButton}>
           {LoadingButton ? animation : 'Submit'}
-        </Button>
+        </Btn>
       </Forms>
     </>
   );
