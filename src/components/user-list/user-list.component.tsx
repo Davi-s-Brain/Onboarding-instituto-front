@@ -21,6 +21,7 @@ export function UserList() {
   }
 
   const token = localStorage.token;
+  const magicNumber = 12;
   const limit = LIMIT;
   const { data } = useQuery(getUsersQuery, {
     context: {
@@ -34,7 +35,11 @@ export function UserList() {
     },
   });
 
-  const [hasNextPage, hasPreviousPage] = [data?.users?.pageInfo?.hasNextPage, data?.users?.pageInfo?.hasPreviousPage];
+  const pageInfo = {
+    hasNextPage: data?.users?.pageInfo?.hasNextPage,
+    hasPreviousPage: data?.users?.pageInfo?.hasPreviousPage,
+  };
+  const { hasNextPage, hasPreviousPage } = pageInfo;
 
   const usersList = data?.users?.nodes?.map((users: usersType) => {
     return (
@@ -48,11 +53,11 @@ export function UserList() {
   });
 
   const nextPage = () => {
-    setOffset(offset + 12);
+    setOffset(offset + magicNumber);
   };
 
   const previousPage = () => {
-    setOffset(offset - 12);
+    setOffset(offset - magicNumber);
   };
 
   return (
