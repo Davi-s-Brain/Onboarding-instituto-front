@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginQuery } from '../../services/loginRequest';
 import { ButtonStyled, FormsStyled, InputStyled, LabelStyled, TitleStyled } from './login.component.style';
 
-export function Login(): JSX.Element {
+export const Login = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -36,13 +36,13 @@ export function Login(): JSX.Element {
     });
   };
 
-  function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  }
+  };
 
-  function handlePassword(e: React.ChangeEvent<HTMLInputElement>) {
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-  }
+  };
 
   return (
     <>
@@ -73,4 +73,4 @@ export function Login(): JSX.Element {
       </FormsStyled>
     </>
   );
-}
+};

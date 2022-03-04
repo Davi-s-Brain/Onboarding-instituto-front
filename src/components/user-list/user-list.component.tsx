@@ -12,7 +12,7 @@ import {
   UlStyled,
 } from './user-list.component.style';
 
-export function UserList() {
+export const UserList = () => {
   const [offset, setOffset] = useState(0);
 
   interface usersType {
