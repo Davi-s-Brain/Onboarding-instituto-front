@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 export const UlStyled = styled.ul`
@@ -28,7 +29,7 @@ export const DivStyled = styled.div`
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 780px;
+  width: 790px;
   padding: 0px;
 `;
 
@@ -39,4 +40,15 @@ export const DivTitleStyled = styled.div`
   padding: 0px 10px 0px 10px;
   width: 100%;
   justify-content: center;
+`;
+
+export const ButtonStyled = styled(Button)`
+  background-color: rgb(93, 0, 180);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 10px 10px 10px;
+  outline-style: none;
+  width: 300px;
+  color: white;
 `;
