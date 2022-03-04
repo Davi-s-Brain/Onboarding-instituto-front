@@ -10,6 +10,8 @@ export const getUsersQuery = gql`
       pageInfo {
         offset
         limit
+        hasPreviousPage
+        hasNextPage
       }
     }
   }
