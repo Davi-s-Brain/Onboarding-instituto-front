@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { LIMIT } from '../../atomic/constants/constants';
 import { getUsersQuery } from '../../services/usersRequest';
 import {
+  ButtonDetailsStyled,
   ButtonStyled,
   CreateUserButtonStyled,
+  Details,
   DivStyled,
   DivTitleStyled,
   H2Styled,
@@ -15,19 +17,24 @@ import {
 } from './user-list.component.style';
 
 export const UserList = () => {
-  const [offset, setOffset] = useState(0);
-  const navigate = useNavigate();
-
   interface usersType {
+    id: string | number;
     name: string;
     email: string;
   }
+
+  const [offset, setOffset] = useState(0);
+  const navigate = useNavigate();
 
   const createUser = () => {
     {
       navigate('/add-user');
     }
-  }
+  };
+
+  const userDetails = (id: string | number) => {
+    navigate(`/user-details/${id}`);
+  };
 
   const token = localStorage.token;
   const magicNumber = 12;
@@ -54,7 +61,10 @@ export const UserList = () => {
     return (
       <React.Fragment key={users.email}>
         <DivStyled>
-          <LiStyled>{users.name}</LiStyled>
+          <Details>
+            <ButtonDetailsStyled onClick={() => userDetails(users.id)}>Detalhes</ButtonDetailsStyled>
+            <LiStyled>{users.name}</LiStyled>
+          </Details>
           <LiStyled>{users.email}</LiStyled>
         </DivStyled>
       </React.Fragment>
@@ -93,4 +103,4 @@ export const UserList = () => {
       </DivTitleStyled>
     </>
   );
-}
+};

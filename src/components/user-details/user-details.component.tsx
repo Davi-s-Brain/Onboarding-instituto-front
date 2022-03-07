@@ -19,6 +19,8 @@ export const UserDatail = () => {
     },
   });
 
+  console.log(data?.user?.id);
+
   return (
     <SectionStyled>
       <TitleStyled>Detalhes do usuário</TitleStyled>
