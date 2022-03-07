@@ -29,7 +29,7 @@ export const DivStyled = styled.div`
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 790px;
+  width: 990px;
   padding: 0px;
 `;
 
@@ -53,6 +53,14 @@ export const ButtonStyled = styled(Button)`
   color: white;
 `;
 
+export const ButtonDetailsStyled = styled(ButtonStyled)`
+  width: 100px;
+`;
+
 export const CreateUserButtonStyled = styled(ButtonStyled)`
   width: 200px;
+`;
+
+export const Details = styled.section`
+  display: flex;
 `;
