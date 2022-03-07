@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getUserByIdQuery } from '../../services/getUserById';
 import { LiStyled, TitleStyled, UlStyled } from './user-details.component.style';
 
-export const UserDatail = () => {
+export const UserDetail = () => {
   const token = localStorage.getItem('token');
   const { id } = useParams();
 
