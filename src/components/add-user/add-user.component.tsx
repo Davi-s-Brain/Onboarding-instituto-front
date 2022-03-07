@@ -26,7 +26,7 @@ export const Adduser = () => {
     },
 
     onError: (error) => {
-      console.log(error);
+      alert(error);
     },
 
     onCompleted: () => {

@@ -1,9 +1,11 @@
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LIMIT } from '../../atomic/constants/constants';
 import { getUsersQuery } from '../../services/usersRequest';
 import {
   ButtonStyled,
+  CreateUserButtonStyled,
   DivStyled,
   DivTitleStyled,
   H2Styled,
@@ -14,10 +16,17 @@ import {
 
 export const UserList = () => {
   const [offset, setOffset] = useState(0);
+  const navigate = useNavigate();
 
   interface usersType {
     name: string;
     email: string;
+  }
+
+  const createUser = () => {
+    {
+      navigate('/add-user');
+    }
   }
 
   const token = localStorage.token;
@@ -63,6 +72,9 @@ export const UserList = () => {
   return (
     <>
       <SubtitleStyled>Listagem de usuários</SubtitleStyled>
+      <DivTitleStyled>
+        <CreateUserButtonStyled onClick={createUser}>Criar usuário</CreateUserButtonStyled>
+      </DivTitleStyled>
 
       <DivTitleStyled>
         <H2Styled>NOME: </H2Styled> <H2Styled>EMAIL: </H2Styled>

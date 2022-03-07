@@ -52,3 +52,7 @@ export const ButtonStyled = styled(Button)`
   width: 300px;
   color: white;
 `;
+
+export const CreateUserButtonStyled = styled(ButtonStyled)`
+  width: 200px;
+`;
